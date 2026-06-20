@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="app-title">⌨️ Typing Speed Test</h1>
+    <p class="subtitle">Measure your WPM and accuracy · Day 48 of 120</p>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span id="wpmStat">0</span>
+        <label>WPM</label>
+      </div>
+      <div class="stat">
+        <span id="accStat">100%</span>
+        <label>Accuracy</label>
+      </div>
+      <div class="stat">
+        <span id="timeStat">60</span>
+        <label>Seconds</label>
+      </div>
+      <div class="stat">
+        <span id="errorStat">0</span>
+        <label>Errors</label>
+      </div>
+      <div class="stat highlight">
+        <span id="pbStat">—</span>
+        <label>Best WPM</label>
+      </div>
+    </div>
+
+    <!-- DIFFICULTY -->
+    <div class="difficulty-row">
+      <label>Difficulty:</label>
+      <button class="diff-btn active" onclick="setDifficulty('easy', this)">Easy</button>
+      <button class="diff-btn" onclick="setDifficulty('medium', this)">Medium</button>
+      <button class="diff-btn" onclick="setDifficulty('hard', this)">Hard</button>
+      <label style="margin-left:auto;">Time:</label>
+      <button class="diff-btn active" id="time-30"
+              onclick="setTime(30, this)">30s</button>
+      <button class="diff-btn" id="time-60"
+              onclick="setTime(60, this)">60s</button>
+      <button class="diff-btn" id="time-120"
+              onclick="setTime(120, this)">120s</button>
+    </div>
+
+    <!-- TEXT DISPLAY -->
+    <div class="text-display" id="textDisplay"></div>
+
+    <!-- INPUT -->
+    <div class="input-wrap">
+      <textarea id="typingInput"
+                placeholder="Click here and start typing..."
+                oninput="handleInput()"
+                onkeydown="handleKeydown(event)"
+                disabled></textarea>
+      <button class="btn-restart" onclick="restartTest()">↺ Restart</button>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="time-bar-wrap">
+      <div class="time-bar" id="timeBar"></div>
+    </div>
+
+    <!-- RESULT MODAL -->
+    <div class="result-modal hidden" id="resultModal">
+      <div class="result-card">
+        <div class="result-icon" id="resultIcon">🎉</div>
+        <h2>Test Complete!</h2>
+        <div class="result-stats">
+          <div class="result-stat">
+            <span id="finalWpm">0</span>
+            <label>WPM</label>
+          </div>
+          <div class="result-stat">
+            <span id="finalAcc">0%</span>
+            <label>Accuracy</label>
+          </div>
+          <div class="result-stat">
+            <span id="finalErrors">0</span>
+            <label>Errors</label>
+          </div>
+          <div class="result-stat">
+            <span id="finalTime">0s</span>
+            <label>Time</label>
+          </div>
+        </div>
+        <div class="pb-banner hidden" id="pbBanner">🏆 New Personal Best!</div>
+        <div class="result-btns">
+          <button class="btn-primary" onclick="restartTest()">Try Again</button>
+          <button class="btn-secondary" onclick="closeResult()">View History</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="history-card">
+      <div class="history-header">
+        <h3>Recent Results</h3>
+        <button onclick="clearHistory()">Clear</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+
+  </div>
+
+  <footer>Day 48 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+  <script src="script.js"></script>
+</body>
+</html>
